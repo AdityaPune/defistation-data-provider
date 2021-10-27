@@ -104,4 +104,4 @@ dist
 .tern-port
 
 logs/
-conf/conf.js
+/conf.js

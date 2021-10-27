@@ -107,8 +107,8 @@ async function gettvl() {
     },
     test: false,
   };
-  let clientId = config.default.clientId;
-  let clientSecret = config.default.key;
+  let clientId = "DAOventures";
+  let clientSecret = "a2ec8991-d4f8-4a3c-8fa2-7e245beaa1e4";
   let auth =
     "Basic " + Buffer.from(clientId + ":" + clientSecret).toString("base64");
   let bodyStr = JSON.stringify(body);
