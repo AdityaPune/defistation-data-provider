@@ -19,9 +19,11 @@
   "homepage": "https://github.com/holynull/defistation-data-provider#readme",
   "dependencies": {
     "@babel/runtime": "^7.13.10",
+    "@defillama/sdk": "^2.3.9",
     "bignumber.js": "^9.0.1",
     "ethers": "^5.0.32",
-    "log4js": "^6.3.0"
+    "log4js": "^6.3.0",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
