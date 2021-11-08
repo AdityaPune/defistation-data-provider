@@ -74,7 +74,7 @@ async function gettvl() {
   console.log(tvl);
 
   let body = {
-    tvl: tvl,
+    tvl: parseInt(tvl),
     volume: 0,
     bnb: 0,
     data: {
