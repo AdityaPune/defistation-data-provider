@@ -82,26 +82,32 @@ async function gettvl() {
         {
           id: "0x2D9a136cF87D599628BCBDfB6C4fe75Acd2A0aA8",
           name: "Elon",
+          stratTVL: ElonTVL,
         },
         {
           id: "0x2AD9F8d4c24652Ea9F8A954F7E1FdB50a3bE1DFD",
           name: "Cuban",
+          stratTVL: CubanTVL,
         },
         {
           id: "0x8fE826cC1225B03Aa06477Ad5AF745aEd5FE7066",
           name: "Citadel",
+          stratTVL: CitadelTVL,
         },
         {
           id: "0x9ee54014e1E6CF10fD7E9290FdB6101fd0d5D416",
           name: "FAANG",
+          stratTVL: FAANGTVL,
         },
         {
           id: "0x5b3ae8b672a753906b1592d44741f71fbd05ba8c",
           name: "Metaverse",
+          stratTVL: MetaverseTVL,
         },
         {
           id: "0x3845d7c09374df1ae6ce4728c99dd20d3d75f414",
           name: "CitadelV2",
+          stratTVL: CitadelV2TVL,
         },
       ],
     },
