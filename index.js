@@ -20,56 +20,76 @@ async function gettvl() {
     FAANG: "0x9ee54014e1E6CF10fD7E9290FdB6101fd0d5D416",
     Metaverse: "0x5b3ae8b672a753906b1592d44741f71fbd05ba8c",
     CitadelV2: "0x3845d7c09374df1ae6ce4728c99dd20d3d75f414",
+    Stonks: "0x07450fFdAA82eC583F2928bF69293d05e53A4ae9",
     //MoneyPrinter: "0x3DB93e95c9881BC7D9f2C845ce12e97130Ebf5f2",
   };
   const timestamp = moment().unix();
   let block = await sdk.api.util.lookupBlock(timestamp);
 
-  let [ElonTVL, CubanTVL, CitadelTVL, FAANGTVL, MetaverseTVL, CitadelV2TVL] =
-    await Promise.all([
-      sdk.api.abi.call({
-        target: DAOvault.Elon, // contract address
-        abi: abi.getAllPoolInUSD, // erc20:methodName
-        block: block[block], // Current block number
-      }),
+  let [
+    ElonTVL,
+    CubanTVL,
+    CitadelTVL,
+    FAANGTVL,
+    MetaverseTVL,
+    CitadelV2TVL,
+    StonksTVL,
+  ] = await Promise.all([
+    sdk.api.abi.call({
+      target: DAOvault.Elon, // contract address
+      abi: abi.getAllPoolInUSD, // erc20:methodName
+      block: block[block], // Current block number
+    }),
 
-      sdk.api.abi.call({
-        target: DAOvault.Cuban, // contract address
-        abi: abi.getAllPoolInUSD, // erc20:methodName
-        block: block[block], // Current block number
-      }),
-      sdk.api.abi.call({
-        target: DAOvault.Citadel, // contract address
-        abi: abi.getAllPoolInUSD, // erc20:methodName
-        block: block[block], // Current block number
-      }),
+    sdk.api.abi.call({
+      target: DAOvault.Cuban, // contract address
+      abi: abi.getAllPoolInUSD, // erc20:methodName
+      block: block[block], // Current block number
+    }),
+    sdk.api.abi.call({
+      target: DAOvault.Citadel, // contract address
+      abi: abi.getAllPoolInUSD, // erc20:methodName
+      block: block[block], // Current block number
+    }),
 
-      sdk.api.abi.call({
-        target: DAOvault.FAANG, // contract address
-        abi: abi.getTotalValueInPool, // erc20:methodName
-        block: block[block], // Current block number
-      }),
+    sdk.api.abi.call({
+      target: DAOvault.FAANG, // contract address
+      abi: abi.getTotalValueInPool, // erc20:methodName
+      block: block[block], // Current block number
+    }),
 
-      sdk.api.abi.call({
-        target: DAOvault.Metaverse, // contract address
-        abi: abi.getAllPoolInUSD, // erc20:methodName
-        block: block[block], // Current block number
-      }),
-      sdk.api.abi.call({
-        target: DAOvault.CitadelV2, // contract address
-        abi: abi.getAllPoolInUSD, // erc20:methodName
-        block: block[block], // Current block number
-      }),
-    ]);
+    sdk.api.abi.call({
+      target: DAOvault.Metaverse, // contract address
+      abi: abi.getAllPoolInUSD, // erc20:methodName
+      block: block[block], // Current block number
+    }),
+    sdk.api.abi.call({
+      target: DAOvault.CitadelV2, // contract address
+      abi: abi.getAllPoolInUSD, // erc20:methodName
+      block: block[block], // Current block number
+    }),
+    sdk.api.abi.call({
+      target: DAOvault.Stonks, // contract address
+      abi: abi.getAllPoolInUSD, // erc20:methodName
+      block: block[block], // Current block number
+    }),
+  ]);
   ElonTVL = parseInt(ElonTVL.output) / 10 ** 6;
   CitadelTVL = parseInt(CitadelTVL.output) / 10 ** 6;
   CubanTVL = parseInt(CubanTVL.output) / 10 ** 6;
   MetaverseTVL = parseInt(MetaverseTVL.output) / 10 ** 18;
   FAANGTVL = parseInt(FAANGTVL.output) / 10 ** 18;
   CitadelV2TVL = parseInt(CitadelV2TVL.output) / 10 ** 18;
+  StonksTVL = parseInt(StonksTVL.output) / 10 ** 18;
 
   let tvl =
-    ElonTVL + CitadelTVL + CubanTVL + MetaverseTVL + FAANGTVL + CitadelV2TVL;
+    ElonTVL +
+    CitadelTVL +
+    CubanTVL +
+    MetaverseTVL +
+    FAANGTVL +
+    CitadelV2TVL +
+    StonksTVL;
   tvl = tvl.toFixed(2);
   console.log(tvl);
 
@@ -108,6 +128,11 @@ async function gettvl() {
           id: "0x3845d7c09374df1ae6ce4728c99dd20d3d75f414",
           name: "CitadelV2",
           stratTVL: CitadelV2TVL,
+        },
+        {
+          id: "0x07450fFdAA82eC583F2928bF69293d05e53A4ae9",
+          name: "STONKS",
+          stratTVL: StonksTVL,
         },
       ],
     },
